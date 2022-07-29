@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int maximumSum(vector<int>& nums) {
+        map<int,vector<int>> mp;
+        int max=-1;
+        for(int i=0;i<nums.size();i++){
+            int a=nums[i];
+            int sum=0;
+            while(a!=0){
+                sum+=a%10;
+                a/=10;
+            }
+            mp[sum].push_back(nums[i]);
+          
+        }
+        
+        for(auto i:mp){
+            int sum=0;
+            vector<int> temp=i.second;
+            if(temp.size()>1){
+                sort(temp.begin(),temp.end());
+                sum=temp[temp.size()-1]+temp[temp.size()-2];
+                if(max<sum)
+                    max=sum;
+            }
+        }
+            
+        return max;
+    }
+};
