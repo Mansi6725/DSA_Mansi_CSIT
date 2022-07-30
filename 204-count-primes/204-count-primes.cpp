@@ -7,8 +7,9 @@ public:
         for(int i=2;i<n;i++){
             if(v[i]){
                 cnt++;
-            for(int j=2*i;j<n;j=j+i)
-                v[j]=false;}
+                for(int j=2*i;j<n;j=j+i)
+                   v[j]=false;
+            }
         }
         return cnt;
         
