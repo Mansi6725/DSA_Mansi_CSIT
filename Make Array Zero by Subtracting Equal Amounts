@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int minimumOperations(vector<int>& nums) {
+        int cnt=0,c=0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]!=0)
+                swap(nums[i],nums[cnt++]);
+            else
+                c++;
+        }
+        // cout<<c;
+        sort(nums.begin(),nums.end()-c);
+        // for(int i=0;i<nums.size();i++)
+        //     cout<<nums[i];
+        int count=0;
+        for(int i=0;i<nums.size()-c;i++){
+            if(nums[i]==0)
+                continue;
+            for(int j=i+1;j<nums.size()-c;j++)
+                nums[j]-=nums[i];
+            count++;
+        }
+        
+        return count;
+    }
+};
